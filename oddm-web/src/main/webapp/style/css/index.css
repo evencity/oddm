@@ -1,0 +1,212 @@
+	html,body{
+	    height: 100%;
+	    width: 100%;
+	    font: 12px arial;
+	    color:#000;
+	    background: url("../images/mainBackGround.jpg");
+	    margin: 0;
+	    padding: 0;
+	    background-size: cover;
+	}
+	.z-main-div{
+	    height: 100%;
+	    width: 100%;
+	    position: relative;
+	}
+	.z-header{
+	    height: 58px;
+	    width: 100%;
+	    line-height:30px;
+	    overflow: hidden;
+	    text-align: center;
+	}
+	.z-header-buttonsAll .a_menu{
+		border: 1px solid #DDDDDD;
+		background: white;
+		padding: 10px 7px 10px 7px; /* 修改二级菜单宽高 */
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 1.1em;
+		color: #333;
+	}
+	.z-header-buttonsAll .a_menu:hover{
+		background: #04B5F9;
+	}
+	.z-header-buttonsAll .menuhidden{
+		display: none;
+	}
+	.z-header-logo{
+	    float: left;
+	    width: 18%;
+	    height: 58px;
+	}
+	.z-title{
+	    height: 58px;
+	    line-height:60px;
+	    width: 100%;
+	    font-size: 1.7em;
+	    font-weight: bold;
+	    color: #ffffff;
+	}
+	.z-header-buttons{
+	    float: left;
+	    height: 58px;
+	    line-height:60px;
+	    text-align: left;
+	}
+	.z-main{
+	    height: calc(100% - 60px - 10px); /*页脚高度和 .z-footer一起调*/
+	    width: 100%;
+	}
+	.z-footer{
+	    height: 10px; /*页面高度，和.z-main一起调*/
+	    width: 100%;
+	    line-height:20px;
+	    overflow: hidden;
+	    text-align: center;
+	    position: absolute;
+	    bottom: 0;
+	}
+	.z-main-right{
+	    float: left;
+	    width: calc(100% - 165px);
+	    height: 100%;
+	    background-color: #FFF;
+	    border-radius: 5px;
+	    margin-left: 8px;
+	}
+	.z-main-right .tab-content{
+	    height: calc(100% - 40px);
+	}
+	.z-main-left{
+	    float: left;
+	    width: 150px;
+	    height: 100%;
+	}
+	.z-left-main{
+	    width: 100%;
+	    height: 100%;
+	    position: relative;
+	    color: #FFF;
+	}
+	.z-left-top{
+	    background: url("../images/systembg.png") no-repeat -80px -250px;
+	    height: 65px;
+	    width: 100%;
+	    line-height:65px;
+	    overflow: hidden;
+	    text-align: center;
+	}
+	.z-left-topImg{
+	    float: left;
+	    margin-left: 10%;
+	    margin-top: 8%;
+	}
+	.z-left-topName{
+	    float: left;
+	    margin-left: 6%;
+	    font-size: 1.5em;
+	}
+	.z-left-middle{
+	    background: url("../images/muebg.png") repeat top left;
+	    height: calc(100% - 50px - 65px);
+	    width: 100%;
+	    overflow: auto;
+	
+	}
+	.z-left-content{
+	    height: 100%;
+	    width: 90%;
+	    margin: 0 auto;
+	}
+	.z-left-menu{
+	    width: 50%;
+	    float: left;
+	    cursor: pointer;
+	    margin-top: 10px;
+	}
+	.z-left-menu .icon_img img{
+	    border-radius: 7px;
+		margin-left: 8%;
+	}
+	.z-left-menu .icon_img img:hover{
+	    background: rgb(0,153,153);
+	    box-shadow: 1px 1px 5px rgb(0,0,0);
+	}
+	.z-left-bottom{
+	    background:url('../images/systembg.png') no-repeat -80px -315px;
+	    height: 50px;
+	    width: 100%;
+	    line-height:50px;
+	    overflow: hidden;
+	    text-align: center;
+	    position: absolute;
+	    bottom: 0;
+	}
+
+	.z-left-bottom-menu{
+	    width: 90%;
+	    height: 100%;
+	    margin: 0 auto;
+	}
+	.z-left-bottom-menuLeft{
+	    float: left;
+	    width: 25%;
+	    height: 90%;
+	    cursor: pointer;
+	}
+	.z-left-bottom-menuLeft .first-menu{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -268px -314px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .first-menu:hover{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -268px -337px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .second-menu{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -291px -314px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .second-menu:hover{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -291px -337px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .third-menu{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -314px -314px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .third-menu:hover{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -314px -337px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .fourth-menu{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -337px -314px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.z-left-bottom-menuLeft .fourth-menu:hover{
+	    width: 23px;
+	    height: 21px;
+	    background: url('../images/systembg.png') no-repeat -337px -337px;
+	    margin: 35% 0% 0% 20%;
+	}
+	.menu_active{
+		background: #04B5F9;
+	}
+	.messager-body {
+	    padding: 10px;
+	    overflow: auto;
+	}

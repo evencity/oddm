@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+	<!-- default-autowire="byName" default-lazy-init="false"此两个值可以不配置 autowire如果配置 可能对后面有影响-->
+	<description>定时任务处理，需要导入org.quartz-scheduler包</description>
+  <!-- A.配置调度的任务对应bean的id和自定义class-->
+  <!-- <bean id="myWebsocketBean" class="com.apical.oddm.web.quartz.MyWebsocketJob" /> -->
+  <!-- <bean id="myClearUnreadBean" class="com.apical.oddm.web.quartz.MyClearUnreadJob" />  直接用@Component注解，否则@Autowired的类不能自动注入-->
+  <!-- B.配置调度任务对应的bean的id和执行的方法,作业不并发调度-->
+  <bean id="myWebsocketJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="myWebsocketBean" /> <!-- 属性注入 -->
+    <property name="targetMethod" value="execute" /> <!-- 方法名，可以不实现Job -->
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="myClearUnreadJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="myClearUnreadBean" />
+    <property name="targetMethod" value="execute" /> <!-- 方法名，可以不实现Job -->
+    <property name="concurrent" value="false" />
+  </bean>
+  <!-- C.配置调度任务执行的触发的时间-->
+  <bean id="myWebsocketTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+  <property name="jobDetail" ref="myWebsocketJob" />
+     <property name="cronExpression">
+     <!-- 调度时间 -->
+     <!--  <value>2/5 * * * * ?</value>  -->
+      <value>0 35 2 * * ?</value>
+    </property>
+  </bean>
+  <bean id="myClearCacheTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+  <property name="jobDetail" ref="myClearUnreadJob" />
+     <property name="cronExpression">
+     <!-- 调度时间 -->
+   <!--    <value>2/5 * * * * ?</value>  -->
+      <value>0 40 2 * * ?</value>
+    </property>
+  </bean>
+  <!-- D.Quartz的调度工厂，调度工厂只能有一个，多个调度任务在list中添加 -->
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+         <!-- 所有的调度列表-->
+        <ref bean="myWebsocketTrigger" />
+        <ref bean="myClearCacheTrigger" />
+        
+<!-- <ref bean="myTrigger1" />
+        <ref bean="myTrigger2" />
+        对应的bean配置：id="myDetail1" 和 id="myTrigger2" 可以对应的并行多配置-对应执行JavaBean和执行时间(各自触发time)
+  -->
+      </list>
+    </property>
+  </bean>
+</beans>
+<!-- 配置说明：
+
+一个自定义类（不用实现job），对应一个job 一个trigger 一个调度线程池SchedulerFactoryBean；要写第二个自定一类，job、trigger也要写一套，调度线程池不需要。
+ 
+CronTrigger配置格式:
+格式: [秒] [分] [小时] [日] [月] [周] [年]
+
+序号	说明	是否必填	允许填写的值	允许的通配符
+1	秒	是			0-59	, - * /            
+2	分	是			0-59	, - * /
+3	小时	是			0-23	, - * /
+4	日	是			1-31	, - * ? / L W
+5	月	是			1-12 or JAN-DEC	, - * /
+6	周	是			1-7 or SUN-SAT	, - * ? / L #
+7	年	否			empty 或 1970-2099	, - * /*/
+
+/*
+Expression	Meaning
+0 0 12 * * ?	Fire at 12pm (noon中午) every day    
+0 15 10 ? * *	Fire at 10:15am every day
+0 15 10 * * ?	Fire at 10:15am every day
+0 15 10 * * ? *	Fire at 10:15am every day
+0 15 10 * * ? 2005	Fire at 10:15am every day during the year 2005
+0 * 14 * * ?	Fire every minute starting at 2pm and ending at 2:59pm, every day
+0 0/5 14 * * ?	Fire every 5 minutes starting at 2pm and ending at 2:55pm, every day
+0 0/5 14,18 * * ?	Fire every 5 minutes starting at 2pm and ending at 2:55pm, AND fire every 5 minutes starting at 6pm and ending at 6:55pm, every day
+0 0-5 14 * * ?	Fire every minute starting at 2pm and ending at 2:05pm, every day
+0 10,44 14 ? 3 WED	Fire at 2:10pm and at 2:44pm every Wednesday in the month of March.
+0 15 10 ? * MON-FRI	Fire at 10:15am every Monday, Tuesday, Wednesday, Thursday and Friday
+0 15 10 15 * ?	Fire at 10:15am on the 15th day of every month
+0 15 10 L * ?	Fire at 10:15am on the last day of every month
+0 15 10 ? * 6L	Fire at 10:15am on the last Friday of every month
+0 15 10 ? * 6L	Fire at 10:15am on the last Friday of every month
+0 15 10 ? * 6L 2002-2005	Fire at 10:15am on every last friday of every month during the years 2002, 2003, 2004 and 2005
+0 15 10 ? * 6#3	Fire at 10:15am on the third Friday of every month
+0 0 12 1/5 * ?	Fire at 12pm (noon) every 5 days every month, starting on the first day of the month.
+0 11 11 11 11 ?	Fire every November 11th at 11:11am.
+ -->

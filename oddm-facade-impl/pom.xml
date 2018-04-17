@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+    <modelVersion>4.0.0</modelVersion>  
+    <parent> 
+        <groupId>com.apical</groupId>  
+        <artifactId>oddm</artifactId>  
+        <version>1.0.0-SNAPSHOT</version> 
+    </parent>  
+    <artifactId>oddm-facade-impl</artifactId>  
+    <name>oddm-facade-impl</name>  
+    <packaging>jar</packaging>  
+    <url>http://maven.apache.org</url>  
+    <properties> 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+        <project.type>facadeImpl</project.type>  
+        <base.package>com.apical.oddm.facade.impl</base.package> 
+    </properties>  
+    <dependencies> 
+        <dependency> 
+            <groupId>com.apical</groupId>  
+            <artifactId>oddm-application</artifactId>  
+            <version>${project.parent.version}</version> 
+        </dependency>  
+        <dependency> 
+            <groupId>com.apical</groupId>  
+            <artifactId>oddm-facade</artifactId>  
+            <version>${project.parent.version}</version> 
+        </dependency>  
+        <dependency> 
+            <groupId>com.apical</groupId>  
+            <artifactId>oddm-conf</artifactId>  
+            <version>${project.parent.version}</version>  
+            <scope>test</scope>
+        </dependency> 
+         <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+        </dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+	
+		</dependency>
+		<!-- xlsx格式 -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		   
+		</dependency>
+		<!-- 导出pdf -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.9</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.itextpdf</groupId>
+		  <artifactId>itextpdf</artifactId>
+		  <version>5.5.3</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.itextpdf</groupId>
+		    <artifactId>itext-asian</artifactId>
+		    <version>5.2.0</version>
+		</dependency>
+    </dependencies> 
+</project>

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/configs/database.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/order/orderStatisticsYearChart.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sale/saleInfo/saleInfoExcelExport.jsp=UTF-8
+encoding//src/main/webapp/file.jsp=UTF-8
+encoding//src/main/webapp/jslib/sockjs.min.js=UTF-8
+encoding//src/test/java=UTF8
+encoding/<project>=UTF-8

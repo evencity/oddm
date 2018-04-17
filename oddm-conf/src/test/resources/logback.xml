@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/2002/xmlspec/dtd/2.10/xmlspec.dtd">
+<!-- if debug set to true, context info always print otherwise the contex info will print when error occour -->
+<!-- 大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<!-- 自定义常量 -->
+	<property name="LOG_PATH" value="/usr/local/server/log4j/oddm/"/>
+	<property name="PROJECT_NAME" value="oddm"/>  <!-- 每个项目都不同，要手动改 -->
+
+	<!-- 打印控制台日志 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<!-- 日志文件-->
+	<!-- 功能：只记录debug info -->
+	<appender name="log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 过滤器，这个过滤器是行为过滤器，直接过滤掉了除定义级别外所有的行为信息 -->
+        <!-- "NEUTRAL"时，继续调用链中的下一个Regular Filter -->
+       	<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>debug</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>NEUTRAL</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+     	<File>${LOG_PATH}${PROJECT_NAME}/${PROJECT_NAME}${LOCAL_IP}.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}${PROJECT_NAME}/${PROJECT_NAME}${LOCAL_IP}.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory><!-- 删除日期天 -->
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- 功能：只记录warn error -->
+	<appender name="errorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter"><!-- 临界值过滤器，过滤掉低于指定临界值的日志 -->
+			<level>WARN</level><!-- 只记录warn及更严重的日志 -->
+		</filter>
+		<File>${LOG_PATH}${PROJECT_NAME}/${PROJECT_NAME}-error${LOCAL_IP}.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		  	<fileNamePattern>${LOG_PATH}${PROJECT_NAME}/${PROJECT_NAME}-error${LOCAL_IP}.%d{yyyy-MM-dd}.log</fileNamePattern>
+		  	<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- additivity属性为false，表示此loger的打印信息不再向上级root logger传递，默认为true -->
+	<!-- 为某个包下的所有类指定Appender 这里也可以指定类名称例如：com.aa.bb.ClassName-->
+	<logger name="org" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="errorLog" />
+	</logger>
+	<root level="info">
+ 		<appender-ref ref="stdout" />
+		<appender-ref ref="log" />
+		<appender-ref ref="errorLog" />
+	</root>
+	<!-- 注意：要改成debug模式，则改1、<root level="debug">  2、取消<appender name="log"里面的debug过滤器 -->
+</configuration>

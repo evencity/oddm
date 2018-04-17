@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+<!-- 	<sys_organization id="1" name="品质部" icon="icon-company" seq="1"  timestamp="2016-10-11 20:02:13" />
+ -->	
+ 	<!-- 写表名称即可 -->
+ 	<sys_organization/>
+</dataset>

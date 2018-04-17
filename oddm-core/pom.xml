@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+    <modelVersion>4.0.0</modelVersion>  
+    <parent> 
+        <groupId>com.apical</groupId>  
+        <artifactId>oddm</artifactId>  
+        <version>1.0.0-SNAPSHOT</version> 
+    </parent>  
+    <artifactId>oddm-core</artifactId>  
+    <name>oddm-core</name>  
+    <packaging>jar</packaging>  
+    <url>http://maven.apache.org</url>  
+    <properties> 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+        <project.type>bizModel</project.type>  
+        <base.package>com.apical.oddm.core.domain</base.package> 
+    </properties>  
+    <dependencies> 
+    <!-- 测试 -->
+       	<dependency>
+			<groupId>com.github.springtestdbunit</groupId>
+			<artifactId>spring-test-dbunit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+		</dependency>
+       	<!-- Spring -->
+      	 	<!-- <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+			</dependency> -->
+	        <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+			</dependency>
+			<!-- AspectJ 支持spring切面编程 -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+			</dependency>
+			<!-- hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+			</dependency>
+	  		<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+			</dependency>	
+			<dependency>	
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+			</dependency>
+			<!-- @inject是java的规范，用spring的@Autowired替代即可 -->
+			<!-- <dependency>
+			    <groupId>javax.inject</groupId> 
+			    <artifactId>javax.inject</artifactId>
+			    <version>1</version>  
+			</dependency> -->
+			<dependency>
+			   <groupId>javax.el</groupId>
+			   <artifactId>javax.el-api</artifactId>
+			   <version>3.0.0</version>
+			</dependency>
+			<dependency>
+			   <groupId>org.glassfish.web</groupId>
+			   <artifactId>javax.el</artifactId>
+			   <version>2.2.6</version>
+			</dependency>
+			<!-- mysql驱动、连接池 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+			</dependency>
+			<dependency>
+			    <groupId>com.alibaba</groupId>
+			    <artifactId>druid</artifactId>
+			</dependency>
+        <!-- 加入对infra层的依赖 -->  
+        <dependency> 
+            <groupId>com.apical</groupId>  
+            <artifactId>oddm-infra</artifactId>  
+            <version>${project.parent.version}</version>  
+        </dependency>  
+        <!-- 加入CONF依赖 -->
+        <dependency> 
+            <groupId>com.apical</groupId>  
+            <artifactId>oddm-conf</artifactId>  
+            <version>${project.parent.version}</version>  
+        </dependency>  
+    </dependencies> 
+</project>

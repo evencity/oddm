@@ -1,0 +1,50 @@
+package com.apical.oddm.web.pageModel.base;
+
+public class PageFilter implements java.io.Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public String toString() {
+		return "PageFilter [page=" + page + ", rows=" + rows + ", sort=" + sort
+				+ ", order=" + order + "]";
+	}
+
+	private int page;// 当前页
+	private int rows;// 每页显示记录数
+	private String sort;// 排序字段
+	private String order;// asc/desc
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) { //修改setRow名称后，也面传不了pageSize进来
+		this.rows = rows;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public String getOrder() {
+		return order;
+	}
+
+	public void setOrder(String order) {
+		this.order = order;
+	}
+
+}

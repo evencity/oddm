@@ -1,0 +1,21 @@
+﻿*{padding:0;margin:0;border:0;}
+body{font-family: "宋体", Arial, Helvetica, sans-serif;font-size:9pt;font-weight:400;font-style:normal;font-variant:normal;color:#000;line-height:140%; background-color:#FFF;}
+.A4page{width:172mm;}
+.tdtitle{width:100%;height:5mm; font-size:11pt;font-weight:600; color:#000;padding-top:2mm;}
+.lefttd{width:17mm;}.righttd{width:26mm;}
+.bl{color:#000;}
+.showselectdtable
+{
+   /*  width: 170mm; */
+   width: 100%;
+    border-right: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+}
+.showselectdtable tr td{border-left:1px solid #666666;border-top:1px solid #666666;padding-left:1mm;}
+.selectd_titletd{height:4mm;}
+.bottdiv{padding-top:1mm;}
+.maintitles{
+    text-align:center;
+    font-size: 16pt;
+    font-weight: bold;padding:3mm 0mm;
+}

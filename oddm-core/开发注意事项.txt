@@ -1,0 +1,6 @@
+使用没设置分页的BaseDaoImpl的list接口注意加上distinct
+
+由于分页截取字符串问题，组from必须小写，结果集里面的FROM用大写
+
+
+

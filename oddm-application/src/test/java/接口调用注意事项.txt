@@ -1,0 +1,16 @@
+1、了解hibernate的懒加载，get(id)不说明都是慢加载。//慢加载 不能调用实体类的外表关联对象，否则报满加载错误。
+2、针对插入数据，可以捕获异常：org.hibernate.exception.ConstraintViolationException 唯一约束，用在字段不能重复的表比如 物表编号、订单编号等
+org.springframework.dao.DataIntegrityViolationException 主键重复，用在主键为字符串的表
+3、插入数据不返回boolean，会返回新的主键。
+4、删除、修改返回空，异常则说明失败。
+
+5、另外页面得注意校验用户的输入。
+
+
+
+
+
+
+
+
+
